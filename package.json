@@ -1,0 +1,14 @@
+{
+  "name": "umbrella_reminder",
+  "version": "1.0.0",
+  "description": "Reminds you to take an umbrella if it's forecasted to rain",
+  "main": "umbrella_reminder.js",
+  "author": "Anja Istenic <aistenic1@gmail.com>",
+  "license": "unlicenced",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
