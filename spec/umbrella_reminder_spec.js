@@ -21,7 +21,7 @@ describe("Umbrella Reminder", () => {
   });
 
   describe("getRain", () => {
-    // getWeather should return a json file from api
+    // getRain should return a rain probability
     const rainProbability = getRain();
     it("should return rain probability for given city as Number", () => {
       assert.equal(typeof rainProbability, 'number');
