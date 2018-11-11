@@ -12,7 +12,7 @@ const person = people[Math.floor(Math.random()*people.length)];
 // getRain should return a number, rain probability.
 // should display 'you (don't) need an umbrella'
 const getRain = (cityId) => {
-  const urlWeather = `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityId}?apikey=${apiKey}&details=true&metric=true`;
+  const urlWeather = `https://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityId}?apikey=${apiKey}&details=true&metric=true`;
   fetch(urlWeather).then((response) => response.json()).
     then((data) => {
       const hoursOfRain = data["DailyForecasts"][0]["Day"]["HoursOfRain"];
@@ -33,7 +33,7 @@ const getRain = (cityId) => {
 
 // gets city id from api to be used in the weather api aboce
 const getCityId = (city) => {
-  const urlCity = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${city}`;
+  const urlCity = `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${city}`;
   fetch(urlCity).then((response) => response.json())
     .then((data) => {
       getRain(data[0]["Key"]);
