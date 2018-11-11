@@ -22,7 +22,7 @@ const getRain = (cityId) => {
       const hoursOfRain = data["DailyForecasts"][0]["Day"]["HoursOfRain"]
       const rainProbability = data["DailyForecasts"][0]["Day"]["RainProbability"];
       const rainAmount = data["DailyForecasts"][0]["Day"]["Rain"]["Value"];
-      message.innerHTML = `<li>Hours of rain: ${hoursOfRain}</li><li>probability of rain: ${rainProbability}</li><li>amount of rainfall: ${rainAmount}mm</li>`
+      message.innerHTML = `<li>Hours of rain: ${hoursOfRain}</li><li>Probability of rain: ${rainProbability}</li><li>Amount of rainfall: ${rainAmount}mm</li>`
       if (rainAmount === 0) {
         umbrella.innerText = "You don't need an umbrella today!"
       } else if (rainAmount <= 2) {
@@ -44,6 +44,7 @@ const getCityId = (city) => {
 
 searchButton.addEventListener("click", (event) => {
   userSearch = searchBox.value;
+  getCityId(userSearch);
 });
 
 searchBox.addEventListener("keyup", (event) => {
