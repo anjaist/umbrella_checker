@@ -1,17 +1,13 @@
+const rain = document.querySelector(".rain");
 const searchButton = window.document.getElementById("btn-search");
 const searchBox = document.getElementById("city-search");
 let userSearch = "";
 const apiKey = 'LuvtMm2dFMDIvmKraeXmpQgrLJ02ntwb';
 const message = document.querySelector(".message");
 const umbrella = document.querySelector(".umbrella");
-const personImages = ['person1', 'person2', 'person3', 'person4',
-  'person5', 'person6', 'person7', 'person8', 'person9'];
+const people = ['2', '3', '4', '5', '6', '7', '8', '9'];
 const personImage = document.querySelector(".person");
-
-//load initial image of person
-document.addEventListener("load", (event) => {
-  personImage.src = `images/${personImages[2]}.svg`;
-});
+const person = people[Math.floor(Math.random()*people.length)];
 
 // getRain should return a number, rain probability.
 // should display 'you (don't) need an umbrella'
@@ -19,16 +15,18 @@ const getRain = (cityId) => {
   const urlWeather = `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityId}?apikey=${apiKey}&details=true&metric=true`;
   fetch(urlWeather).then((response) => response.json()).
     then((data) => {
-      const hoursOfRain = data["DailyForecasts"][0]["Day"]["HoursOfRain"]
+      const hoursOfRain = data["DailyForecasts"][0]["Day"]["HoursOfRain"];
       const rainProbability = data["DailyForecasts"][0]["Day"]["RainProbability"];
       const rainAmount = data["DailyForecasts"][0]["Day"]["Rain"]["Value"];
-      message.innerHTML = `<li>Hours of rain: ${hoursOfRain}</li><li>Probability of rain: ${rainProbability}</li><li>Amount of rainfall: ${rainAmount}mm</li>`
+      message.innerHTML = `<li>Hours of rain: ${hoursOfRain}</li><li>Probability of rain: ${rainProbability}</li><li>Amount of rainfall: ${rainAmount}mm</li>`;
       if (rainAmount === 0) {
-        umbrella.innerText = "You don't need an umbrella today!"
+        umbrella.innerText = "You don't need an umbrella today!";
       } else if (rainAmount <= 2) {
-        umbrella.innerText = "You should probably take an umbrella today!"
+        umbrella.innerText = "You should probably take an umbrella today!";
+        rain.src = "images/raindrops.png";
       } else if (rainAmount > 2) {
-        umbrella.innerText = "Definitely take an umbrella! Happy swimming."
+        umbrella.innerText = "Definitely take an umbrella! Happy swimming.";
+        rain.src = "images/raindrops2.png";
       }
     });
 };
@@ -43,17 +41,15 @@ const getCityId = (city) => {
 };
 
 searchButton.addEventListener("click", (event) => {
-  userSearch = searchBox.value;
+  userSearch = searchBox.value.trim();
   getCityId(userSearch);
+  personImage.src = `images/person${person}.svg`;
 });
 
 searchBox.addEventListener("keyup", (event) => {
   if (event.keyCode === 13) {
-    userSearch = searchBox.value;
+    userSearch = searchBox.value.trim();
     getCityId(userSearch);
+    personImage.src = `images/person${person}.svg`;
   }
 });
-
-// TODO:
-// design
-// (should send push notification if umbrella is needed?)
