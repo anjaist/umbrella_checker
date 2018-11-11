@@ -4,6 +4,14 @@ let userSearch = "";
 const apiKey = 'LuvtMm2dFMDIvmKraeXmpQgrLJ02ntwb';
 const message = document.querySelector(".message");
 const umbrella = document.querySelector(".umbrella");
+const personImages = ['person1', 'person2', 'person3', 'person4',
+  'person5', 'person6', 'person7', 'person8', 'person9'];
+const personImage = document.querySelector(".person");
+
+//load initial image of person
+document.addEventListener("load", (event) => {
+  personImage.src = `images/${personImages[2]}.svg`;
+});
 
 // getRain should return a number, rain probability.
 // should display 'you (don't) need an umbrella'

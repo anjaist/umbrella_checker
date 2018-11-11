@@ -4,4 +4,25 @@ body {
 
 .container {
   text-align: center;
+  height: 100vh;
+  position:relative;
+  background-image: url(images/speech_bubble.svg);
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: right 1% bottom 80%;
+}
+
+.person {
+  width: 50vw;
+  position: absolute;
+  bottom: -27px;
+  left: 0px;
+}
+
+.speech-bubble {
+  height: 70vh;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 10px;
 }
